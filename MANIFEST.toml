@@ -1,0 +1,23 @@
+[manifest]
+repo       = "UCX"
+role       = "universal-compute-exchange"
+version    = "0.1.0"
+security   = "medium"
+port       = 7790
+
+[protocol]
+kind       = "compute-broker"
+transports = ["http"]
+adapters   = ["gpu-ai", "akash", "vast"]
+
+[events]
+emits    = ["job.created", "job.allocated", "job.completed", "job.cancelled"]
+consumes = []
+
+[receipts]
+kind = "compute"
+arp  = true
+
+[dependencies]
+required  = []
+optional  = ["vantage", "omo-koda2"]
