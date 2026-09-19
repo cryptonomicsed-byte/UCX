@@ -5,9 +5,14 @@
 // Inference endpoint:   POST /v1/chat/completions
 //
 // Auth: Bearer token via GPUAI_KEY env var (or constructor injection).
+// Marketplace/funding auth: UCX_GPUAI_MASTER_KEY (master key, never exposed to agents).
 
 mod fine_tune;
 mod inference;
+pub mod marketplace;
 
 pub use fine_tune::GpuAiFineTuneAdapter;
 pub use inference::GpuAiInferenceAdapter;
+pub use marketplace::{
+    AccountBalance, DepositAddress, EarningsReport, GpuAiMarketplaceAdapter, GpuSpec, MachineId,
+};

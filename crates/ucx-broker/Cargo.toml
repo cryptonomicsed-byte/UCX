@@ -17,6 +17,10 @@ uuid               = { workspace = true }
 thiserror          = { workspace = true }
 reqwest            = { version = "0.12", features = ["json", "blocking"] }
 tracing            = "0.1"
+hmac               = "0.12"
+hex                = { workspace = true }
+chrono             = { workspace = true }
+sha2               = { workspace = true }
 axum               = "0.8"
 tokio              = { version = "1", features = ["full"] }
 tracing-subscriber = "0.3"
