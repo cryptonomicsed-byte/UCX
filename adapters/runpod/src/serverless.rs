@@ -253,6 +253,7 @@ impl ExternalProviderAdapter for RunPodServerlessAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 }

@@ -78,7 +78,9 @@ impl Broker {
     }
 
     pub fn receipt(&self, job_id: JobId, provider_id: &str) -> Result<ComputeReceipt, UcxError> {
-        self.find_provider(provider_id)?.receipt(job_id)
+        let mut r = self.find_provider(provider_id)?.receipt(job_id)?;
+        r.stamp_gix1();
+        Ok(r)
     }
 
     pub fn cancel(&self, job_id: JobId, provider_id: &str) -> Result<(), UcxError> {

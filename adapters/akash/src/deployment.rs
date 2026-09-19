@@ -236,6 +236,7 @@ impl ComputeProvider for AkashAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 
@@ -301,6 +302,7 @@ impl ExternalProviderAdapter for AkashAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 }

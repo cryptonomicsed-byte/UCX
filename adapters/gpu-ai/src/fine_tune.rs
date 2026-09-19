@@ -183,6 +183,7 @@ impl ComputeProvider for GpuAiFineTuneAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 
@@ -256,6 +257,7 @@ impl ExternalProviderAdapter for GpuAiFineTuneAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 }

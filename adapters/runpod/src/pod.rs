@@ -30,6 +30,7 @@ pub struct RunPodPodAdapter {
 struct PodRecord {
     pod_id:     String,
     status:     JobStatus,
+    #[allow(dead_code)]   // stored for diagnostic/logging use
     image:      String,
     started_at: chrono::DateTime<Utc>,
 }
@@ -207,6 +208,7 @@ impl ComputeProvider for RunPodPodAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 

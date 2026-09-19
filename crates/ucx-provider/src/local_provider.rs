@@ -183,6 +183,7 @@ fn build_receipt(job_id: JobId, provider_id: &str, result: RunResult) -> Compute
             runtime_attestation: None,
             execution_hash:      result.execution_hash,
         },
-        zangbeto_anchor: None,
+        zangbeto_anchor:   None,
+        gix1_canonical_id: None,
     }
 }

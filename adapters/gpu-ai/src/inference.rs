@@ -155,6 +155,7 @@ impl ExternalProviderAdapter for GpuAiInferenceAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 }

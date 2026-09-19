@@ -254,6 +254,7 @@ impl ComputeProvider for VastAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 
@@ -330,6 +331,7 @@ impl ExternalProviderAdapter for VastAdapter {
                 execution_hash:      None,
             },
             zangbeto_anchor: None,
+            gix1_canonical_id: None,
         })
     }
 }
