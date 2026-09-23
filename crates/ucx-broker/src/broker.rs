@@ -83,6 +83,36 @@ impl Broker {
         Ok(r)
     }
 
+    /// Finalize a ComputeReceipt by fetching a Zàngbétò anchor and stamping GIX1.
+    ///
+    /// This is the async variant of `receipt()` used when the broker is running
+    /// in an async context (e.g. the HTTP API handler).  The sync `receipt()`
+    /// path is retained for blocking callers; they can attach the anchor
+    /// separately via `attach_zangbeto_anchor()`.
+    pub async fn receipt_with_anchor(
+        &self,
+        job_id: JobId,
+        provider_id: &str,
+    ) -> Result<ComputeReceipt, UcxError> {
+        let mut r = self.find_provider(provider_id)?.receipt(job_id)?;
+        r.stamp_gix1();
+        // Fetch Zàngbétò anchor — fail-open: receipt is still returned on error.
+        let anchor = crate::mint_allowlist::get_zangbeto_anchor(&r.job_id.to_string()).await;
+        if anchor.is_some() {
+            r.zangbeto_anchor = anchor;
+        }
+        Ok(r)
+    }
+
+    /// Attach a Zàngbétò anchor to an already-retrieved receipt (async, fail-open).
+    pub async fn attach_zangbeto_anchor(&self, receipt: &mut ComputeReceipt) {
+        if receipt.zangbeto_anchor.is_none() {
+            let anchor =
+                crate::mint_allowlist::get_zangbeto_anchor(&receipt.job_id.to_string()).await;
+            receipt.zangbeto_anchor = anchor;
+        }
+    }
+
     pub fn cancel(&self, job_id: JobId, provider_id: &str) -> Result<(), UcxError> {
         self.find_provider(provider_id)?.cancel(job_id)
     }
